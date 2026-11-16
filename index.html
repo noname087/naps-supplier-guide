@@ -6,7 +6,7 @@
 <title>คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane</title>
 <meta name="description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน: คีย์ Invoice แบบเลือก PO หรืออัปโหลด CSV, ออก Delivery Ticket และจอง Fast Lane">
 <meta property="og:title" content="คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane">
-<meta property="og:description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน 4 ตอน">
+<meta property="og:description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน 5 ตอน">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,6 +90,8 @@ a:hover{color:var(--primary-hover)}
 .flow-chip:hover{border-color:var(--ink);background:var(--surface);color:var(--ink)}
 .flow-chip b{font-family:var(--mono);font-weight:500;color:var(--primary);font-size:var(--fs-label);letter-spacing:.06em}
 .flow-chip.single{display:inline-flex}
+.chip-row{display:flex;flex-wrap:wrap;gap:var(--s-2)}
+.tag{font-style:normal;font-weight:500;font-size:var(--fs-label);line-height:1;color:#6B4E00;background:#FFF6DF;border:1px solid var(--accent);border-radius:var(--r-1);padding:3px 6px;margin-left:4px;vertical-align:2px;white-space:nowrap}
 
 /* Sections */
 section.block{padding:var(--s-9) 0;border-top:1px solid var(--line)}
@@ -210,7 +212,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div>
-        <p class="label">Supplier Delivery Enhancement · วิดีโอ 4 ตอน</p>
+        <p class="label">Supplier Delivery Enhancement · วิดีโอ 5 ตอน</p>
         <h1 id="h1">คีย์ Invoice และจอง Fast Lane บน <em>NAPS</em> <span class="nw">ทีละขั้นตอน</span></h1>
         <p class="lead">วิดีโอสอนสำหรับซัพพลายเออร์ที่ส่งสินค้าเข้า APC ตั้งแต่สร้าง Invoice ในระบบ ออก Delivery Ticket ไปจนถึงจองช่องลงสินค้า Fast Lane ดูตามลำดับ หรือเลือกเฉพาะตอนที่ต้องการก็ได้</p>
         <div class="hero-actions">
@@ -238,7 +240,10 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
           <li class="flow-step">
             <span class="flow-dot" aria-hidden="true">B</span>
             <h3>ออก Delivery Ticket</h3>
-            <a class="flow-chip single" href="#step-3" data-go="3"><b>ตอน 03</b>ดูวิดีโอ</a>
+            <div class="chip-row">
+              <a class="flow-chip" href="#step-3" data-go="3"><b>ตอน 03</b>ดูวิดีโอ</a>
+              <a class="flow-chip" href="#step-3-1" data-go="3-1"><b>ตอน 3.1</b>แก้ไขข้อมูล Invoice</a>
+            </div>
           </li>
           <li class="flow-step">
             <span class="flow-dot" aria-hidden="true">C</span>
@@ -255,7 +260,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
       <div class="sec-head">
         <p class="label">บทเรียน</p>
         <h2 id="lessons-h">ดูวิดีโอทีละตอน</h2>
-        <p>ตอนที่ 1 และ 2 คือการสร้าง Invoice สองวิธี เลือกดูวิธีที่บริษัทคุณใช้ จากนั้นดูตอนที่ 3 และ 4 ต่อ</p>
+        <p>ตอนที่ 1 และ 2 คือการสร้าง Invoice สองวิธี เลือกดูวิธีที่บริษัทคุณใช้ จากนั้นดูตอนที่ 3 และ 4 ต่อ ถ้าต้องแก้ไขข้อมูล Invoice ที่คีย์ไปแล้ว ดูตอนที่ 3.1</p>
       </div>
     </div>
     <div class="wrap wrap-wide">
@@ -282,7 +287,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
         <div>
           <ol class="chapters" id="chapters" aria-label="รายการวิดีโอ"></ol>
           <div class="progress">
-            <span id="progress-text">ดูแล้ว 0 จาก 4 ตอน</span>
+            <span id="progress-text">ดูแล้ว 0 จาก 5 ตอน</span>
             <button class="linkbtn" id="reset" type="button">ล้างสถานะ</button>
           </div>
         </div>
@@ -342,13 +347,15 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
 <script>
 (function(){
   var VIDEOS = [
-    {id:"1LQxOmU7PM6OKaYcSVFiV1EJ4x0Uxg2mG", title:"คีย์ Invoice แบบเลือก PO",
+    {num:"01", slug:"1", id:"1LQxOmU7PM6OKaYcSVFiV1EJ4x0Uxg2mG", title:"คีย์ Invoice แบบเลือก PO",
      desc:"เลือก PO ที่จะส่งสินค้า แล้วกรอกข้อมูล Invoice บนหน้าจอ NAPS", group:"invoice"},
-    {id:"1Xu_Rz6RdBa52qrP4gWK7Rfen2ceKSxuu", title:"คีย์ Invoice ด้วยการอัปโหลดไฟล์ CSV",
+    {num:"02", slug:"2", id:"1Xu_Rz6RdBa52qrP4gWK7Rfen2ceKSxuu", title:"คีย์ Invoice ด้วยการอัปโหลดไฟล์ CSV",
      desc:"ดาวน์โหลดไฟล์แม่แบบ CSV กรอกข้อมูล แล้วอัปโหลดเข้าระบบ", group:"invoice"},
-    {id:"1_kLOnI-xd8ueR5GRawDEoJvrnM2MAtNV", title:"ออก Delivery Ticket",
+    {num:"03", slug:"3", id:"1_kLOnI-xd8ueR5GRawDEoJvrnM2MAtNV", title:"ออก Delivery Ticket",
      desc:"หลังคีย์ Invoice แล้ว ออก Delivery Ticket สำหรับรอบส่งสินค้า"},
-    {id:"1VZb0guWEqLGF2Bc6WO0BlqPqyde_-MJT", title:"จอง Fast Lane",
+    {num:"3.1", slug:"3-1", id:"17lgqmPKAjFgai-onU6tDKVLCxq7sa8Pp", title:"แก้ไขข้อมูล Invoice",
+     desc:"แก้ไขข้อมูล Invoice ที่คีย์เข้าระบบไปแล้ว", tag:"ถ้าต้องแก้ไข"},
+    {num:"04", slug:"4", id:"1VZb0guWEqLGF2Bc6WO0BlqPqyde_-MJT", title:"จอง Fast Lane",
      desc:"จองช่องลงสินค้า Fast Lane ผ่านระบบ NAPS"}
   ];
   // Google Drive player can be embedded on normal hosts (GitHub Pages, Google Sites, local file).
@@ -373,8 +380,8 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
       var w = !!watched[v.id];
       html += '<li><button type="button" class="chap' + (w ? ' watched' : '') + '" data-i="' + i + '"' +
         (i === current ? ' aria-current="true"' : '') + '>' +
-        '<span class="chap-num">' + pad(i+1) + '</span>' +
-        '<span><span class="chap-title">' + v.title + '</span><span class="chap-desc">' + v.desc + '</span></span>' +
+        '<span class="chap-num">' + v.num + '</span>' +
+        '<span><span class="chap-title">' + v.title + (v.tag ? ' <em class="tag">' + v.tag + '</em>' : '') + '</span><span class="chap-desc">' + v.desc + '</span></span>' +
         '<span class="chap-state" aria-label="' + (w ? 'ดูแล้ว' : 'ยังไม่ได้ดู') + '">' + (w ? ICON_CHECK : ICON_PLAY) + '</span>' +
         '</button></li>';
     });
@@ -390,7 +397,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     var playable = CAN_EMBED;
     screen.innerHTML =
       '<div class="poster">' +
-        '<div class="poster-num">' + pad(i+1) + '<span>.</span></div>' +
+        '<div class="poster-num">' + v.num + '<span>.</span></div>' +
         '<div class="poster-bottom">' +
           '<p class="poster-title">' + v.title + '</p>' +
           (playable
@@ -402,7 +409,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     p.addEventListener("click", function(){
       watched[v.id] = true; save(); renderList();
       if(playable){
-        screen.innerHTML = '<iframe src="https://drive.google.com/file/d/' + v.id + '/preview" title="วิดีโอตอนที่ ' + (i+1) + ': ' + v.title + '" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+        screen.innerHTML = '<iframe src="https://drive.google.com/file/d/' + v.id + '/preview" title="วิดีโอตอนที่ ' + v.num + ': ' + v.title + '" allow="autoplay; fullscreen" allowfullscreen></iframe>';
       }
     });
   }
@@ -411,7 +418,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     opts = opts || {};
     current = Math.max(0, Math.min(VIDEOS.length - 1, i));
     var v = VIDEOS[current];
-    document.getElementById("p-label").textContent = "ตอน " + pad(current+1) + " / " + pad(VIDEOS.length);
+    document.getElementById("p-label").textContent = "ตอน " + v.num + " · " + (current+1) + " จาก " + VIDEOS.length;
     document.getElementById("p-title").textContent = v.title;
     document.getElementById("p-desc").textContent = v.desc;
     document.getElementById("p-ext").href = viewUrl(v);
@@ -419,7 +426,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     document.getElementById("next").disabled = current === VIDEOS.length - 1;
     showPoster(v, current);
     renderList();
-    if(opts.hash !== false){ try{ history.replaceState(null, "", "#step-" + (current+1)); }catch(e){ location.hash = "step-" + (current+1); } }
+    if(opts.hash !== false){ try{ history.replaceState(null, "", "#step-" + v.slug); }catch(e){ location.hash = "step-" + v.slug; } }
     if(opts.scroll){ document.getElementById("lessons").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"}); }
     if(opts.focus){ var b = list.querySelector('[data-i="' + current + '"]'); if(b) b.focus({preventScroll:true}); }
   }
@@ -432,13 +439,15 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
   document.getElementById("prev").addEventListener("click", function(){ select(current - 1); });
   document.getElementById("next").addEventListener("click", function(){ select(current + 1); });
   document.getElementById("reset").addEventListener("click", function(){ watched = {}; save(); renderList(); });
+  function indexOfSlug(slug){ for(var k=0;k<VIDEOS.length;k++){ if(VIDEOS[k].slug === slug) return k; } return -1; }
   document.querySelectorAll("[data-go]").forEach(function(a){
-    a.addEventListener("click", function(e){ e.preventDefault(); select(+a.dataset.go - 1, {scroll:true}); });
+    a.addEventListener("click", function(e){ e.preventDefault(); var k = indexOfSlug(a.dataset.go); if(k >= 0) select(k, {scroll:true}); });
   });
 
   function fromHash(){
-    var m = /^#step-(\d)$/.exec(location.hash);
-    if(m){ select(+m[1] - 1, {hash:false, scroll:true}); return true; }
+    var m = /^#step-([0-9-]+)$/.exec(location.hash);
+    var k = m ? indexOfSlug(m[1]) : -1;
+    if(k >= 0){ select(k, {hash:false, scroll:true}); return true; }
     return false;
   }
   window.addEventListener("hashchange", fromHash);
