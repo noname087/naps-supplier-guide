@@ -159,6 +159,9 @@ section.block{padding:var(--s-9) 0;border-top:1px solid var(--line)}
 .contact li{display:grid;grid-template-columns:120px 1fr;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid #3A3E47}
 .contact span{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:#C9CCD3;padding-top:4px}
 .help .ph{color:#3D2E00}
+.contact-link{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.contact-link:hover{color:#C9CCD3}
+.help :focus-visible{outline-color:#93B4FF}
 
 footer{padding:var(--s-6) 0;font-size:var(--fs-small);color:var(--ink-3)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-3)}
@@ -294,9 +297,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
         <p>ถ้าทำตามวิดีโอแล้วยังติดขัด หรือหน้าจอในระบบไม่ตรงกับวิดีโอ แจ้งเราได้ตามช่องทางนี้</p>
       </div>
       <ul class="contact">
-        <li><span>ผู้ประสานงาน</span><div><span class="ph">Sopanat Dounglek / Logistics department</span></div></li>
-        <li><span>อีเมล</span><div><span class="ph">sopandou@honda.th.com</span></div></li>
-        <li><span>โทร</span><div><span class="ph">093-581-7243</span></div></li>
+        <li><span>ผู้ประสานงาน</span><div>Sopanat Dounglek · Logistics Department</div></li>
+        <li><span>อีเมล</span><div><a class="contact-link" href="mailto:sopandou@honda.th.com">sopandou@honda.th.com</a></div></li>
+        <li><span>โทร</span><div><a class="contact-link" href="tel:0935817243">093-581-7243</a></div></li>
       </ul>
     </div>
   </section>
