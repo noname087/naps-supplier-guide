@@ -6,7 +6,7 @@
 <title>คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane</title>
 <meta name="description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน: คีย์ Invoice แบบเลือก PO หรืออัปโหลด CSV, ออก Delivery Ticket และจอง Fast Lane">
 <meta property="og:title" content="คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane">
-<meta property="og:description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน 5 ตอน">
+<meta property="og:description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน 8 ตอน">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,6 +91,7 @@ a:hover{color:var(--primary-hover)}
 .flow-chip b{font-family:var(--mono);font-weight:500;color:var(--primary);font-size:var(--fs-label);letter-spacing:.06em}
 .flow-chip.single{display:inline-flex}
 .chip-row{display:flex;flex-wrap:wrap;gap:var(--s-2)}
+.chip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .tag{font-style:normal;font-weight:500;font-size:var(--fs-label);line-height:1;color:#6B4E00;background:#FFF6DF;border:1px solid var(--accent);border-radius:var(--r-1);padding:3px 6px;margin-left:4px;vertical-align:2px;white-space:nowrap}
 
 /* Sections */
@@ -212,7 +213,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div>
-        <p class="label">Supplier Delivery Enhancement · วิดีโอ 5 ตอน</p>
+        <p class="label">Supplier Delivery Enhancement · วิดีโอ 8 ตอน</p>
         <h1 id="h1">คีย์ Invoice และจอง Fast Lane บน <em>NAPS</em> <span class="nw">ทีละขั้นตอน</span></h1>
         <p class="lead">วิดีโอสอนสำหรับซัพพลายเออร์ที่ส่งสินค้าเข้า APC ตั้งแต่สร้าง Invoice ในระบบ ออก Delivery Ticket ไปจนถึงจองช่องลงสินค้า Fast Lane ดูตามลำดับ หรือเลือกเฉพาะตอนที่ต้องการก็ได้</p>
         <div class="hero-actions">
@@ -248,7 +249,12 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
           <li class="flow-step">
             <span class="flow-dot" aria-hidden="true">C</span>
             <h3>จองช่องลงสินค้า Fast Lane</h3>
-            <a class="flow-chip single" href="#step-4" data-go="4"><b>ตอน 04</b>ดูวิดีโอ</a>
+            <div class="chip-row chip-grid">
+              <a class="flow-chip" href="#step-4" data-go="4"><b>ตอน 04</b>จองคิว</a>
+              <a class="flow-chip" href="#step-4-1" data-go="4-1"><b>ตอน 4.1</b>ตรวจดูการจอง</a>
+              <a class="flow-chip" href="#step-4-2" data-go="4-2"><b>ตอน 4.2</b>รีปริ้น Privilege Ticket</a>
+              <a class="flow-chip" href="#step-4-3" data-go="4-3"><b>ตอน 4.3</b><span>แก้ไข<span class="nw">ทะเบียน/</span><span class="nw">ประเภทรถ</span></span></a>
+            </div>
           </li>
         </ol>
       </aside>
@@ -260,7 +266,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
       <div class="sec-head">
         <p class="label">บทเรียน</p>
         <h2 id="lessons-h">ดูวิดีโอทีละตอน</h2>
-        <p>ตอนที่ 1 และ 2 คือการสร้าง Invoice สองวิธี เลือกดูวิธีที่บริษัทคุณใช้ จากนั้นดูตอนที่ 3 และ 4 ต่อ ถ้าต้องแก้ไขข้อมูล Invoice ที่คีย์ไปแล้ว ดูตอนที่ 3.1</p>
+        <p>ตอนที่ 1 และ 2 คือการสร้าง Invoice สองวิธี เลือกดูวิธีที่บริษัทคุณใช้ จากนั้นดูตอนที่ 3 และ 4 ต่อ ถ้าต้องแก้ไขข้อมูล Invoice ที่คีย์ไปแล้ว ดูตอนที่ 3.1 ส่วนตอนที่ 4.1–4.3 คือการจัดการคิว Fast Lane หลังจองแล้ว</p>
       </div>
     </div>
     <div class="wrap wrap-wide">
@@ -287,7 +293,7 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
         <div>
           <ol class="chapters" id="chapters" aria-label="รายการวิดีโอ"></ol>
           <div class="progress">
-            <span id="progress-text">ดูแล้ว 0 จาก 5 ตอน</span>
+            <span id="progress-text">ดูแล้ว 0 จาก 8 ตอน</span>
             <button class="linkbtn" id="reset" type="button">ล้างสถานะ</button>
           </div>
         </div>
@@ -356,7 +362,13 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     {num:"3.1", slug:"3-1", id:"17lgqmPKAjFgai-onU6tDKVLCxq7sa8Pp", title:"แก้ไขข้อมูล Invoice",
      desc:"แก้ไขข้อมูล Invoice ที่คีย์เข้าระบบไปแล้ว", tag:"ถ้าต้องแก้ไข"},
     {num:"04", slug:"4", id:"1VZb0guWEqLGF2Bc6WO0BlqPqyde_-MJT", title:"จอง Fast Lane",
-     desc:"จองช่องลงสินค้า Fast Lane ผ่านระบบ NAPS"}
+     desc:"จองช่องลงสินค้า Fast Lane ผ่านระบบ NAPS"},
+    {num:"4.1", slug:"4-1", id:"1zrWNN3x_SwuWml92T20S3xiql65H1X60", title:"ตรวจดูรายละเอียดการจองคิว",
+     desc:"ดูรายละเอียดคิว Fast Lane ที่จองไว้ในระบบ"},
+    {num:"4.2", slug:"4-2", id:"1GYERrUp1l-vyjJopYmAcxG1VA_geZkE5", title:"รีปริ้นเอกสาร Privilege Ticket",
+     desc:"พิมพ์เอกสาร Privilege Ticket ซ้ำอีกครั้ง", tag:"ถ้าต้องพิมพ์ใหม่"},
+    {num:"4.3", slug:"4-3", id:"1qjA2z1buen9hC5wjZieoxbJPf7FPQ31g", title:"แก้ไขทะเบียนรถและประเภทรถ",
+     desc:"แก้ไขทะเบียนรถและประเภทรถในคิวที่จองไว้", tag:"ถ้าต้องแก้ไข"}
   ];
   // Google Drive player can be embedded on normal hosts (GitHub Pages, Google Sites, local file).
   // Claude artifact pages block third-party iframes, so there we show a link to Drive instead.
@@ -376,7 +388,8 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     var html = "";
     VIDEOS.forEach(function(v, i){
       if(i === 0) html += '<li class="fork-label" aria-hidden="true"><i></i>สร้าง Invoice — เลือกวิธีใดวิธีหนึ่ง</li>';
-      if(i === 2) html += '<li class="fork-label" aria-hidden="true">หลังสร้าง Invoice</li>';
+      if(v.slug === "3") html += '<li class="fork-label" aria-hidden="true">หลังสร้าง Invoice</li>';
+      if(v.slug === "4") html += '<li class="fork-label" aria-hidden="true">จอง Fast Lane และจัดการคิว</li>';
       var w = !!watched[v.id];
       html += '<li><button type="button" class="chap' + (w ? ' watched' : '') + '" data-i="' + i + '"' +
         (i === current ? ' aria-current="true"' : '') + '>' +
