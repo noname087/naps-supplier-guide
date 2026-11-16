@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane</title>
+<meta name="description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน: คีย์ Invoice แบบเลือก PO หรืออัปโหลด CSV, ออก Delivery Ticket และจอง Fast Lane">
+<meta property="og:title" content="คู่มือวิดีโอ NAPS: คีย์ Invoice และจอง Fast Lane">
+<meta property="og:description" content="วิดีโอสอนซัพพลายเออร์ใช้ระบบ NAPS ทีละขั้นตอน 4 ตอน">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F5F1; --surface:#FFFFFF; --ink:#16181D; --ink-2:#4A4F59; --ink-3:#6B717C;
+  --line:#DEDBD3; --line-strong:#16181D;
+  --primary:#C8102E; --primary-hover:#A50D26; --primary-tint:#FBEAEC;
+  --accent:#E8A317; --success:#1F7A4D; --focus:#1D4ED8;
+  --font:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --fs-display:clamp(2.25rem,5vw,3.5rem); --fs-h2:clamp(1.5rem,3vw,2rem); --fs-h3:1.25rem;
+  --fs-body-lg:1.125rem; --fs-body:1rem; --fs-small:.875rem; --fs-label:.75rem;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px;
+  --r-1:4px; --r-2:10px;
+  --shadow-1:0 1px 2px rgb(22 24 29 / .06),0 8px 24px rgb(22 24 29 / .06);
+  --wrap:1160px; --pad:24px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:var(--fs-body);line-height:1.7;-webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:var(--primary)}
+a:hover{color:var(--primary-hover)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:var(--s-4);top:-60px;background:var(--ink);color:#fff;padding:var(--s-2) var(--s-4);border-radius:var(--r-1);z-index:10;text-decoration:none}
+.skip:focus{top:var(--s-4);color:#fff}
+.label{font-family:var(--mono);font-size:var(--fs-label);line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+.nw{white-space:nowrap}
+.ph{background:#FFF6DF;border:1px dashed var(--accent);border-radius:var(--r-1);padding:0 6px;color:#6B4E00;font-size:.95em}
+
+/* Top bar */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);min-height:64px}
+.brand{display:flex;align-items:center;gap:var(--s-3);text-decoration:none;color:var(--ink);font-weight:700;line-height:1.3}
+.brand-mark{width:28px;height:28px;border:2px solid var(--ink);border-radius:var(--r-1);display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:500;flex:none}
+.brand small{display:block;font-weight:400;color:var(--ink-3);font-size:var(--fs-small)}
+.top-link{font-weight:500;white-space:nowrap;flex:none;text-decoration:none;padding:var(--s-2) 0;min-height:44px;display:inline-flex;align-items:center}
+.top-link:hover{text-decoration:underline}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);min-height:44px;padding:var(--s-2) var(--s-5);border-radius:var(--r-1);font:inherit;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-hover);color:#fff}
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-secondary:hover{background:var(--surface);color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* Hero */
+.hero{padding:var(--s-8) 0 var(--s-9)}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:var(--s-7);align-items:start}
+@media (min-width:960px){.hero .wrap{grid-template-columns:7fr 5fr;gap:var(--s-8)}}
+.hero h1{font-size:var(--fs-display);line-height:1.15;margin:var(--s-4) 0 var(--s-5);font-weight:700;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--primary)}
+.hero p.lead{font-size:var(--fs-body-lg);color:var(--ink-2);max-width:56ch;margin:0 0 var(--s-6)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center}
+.golive{display:flex;align-items:center;gap:var(--s-3);margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid var(--line);color:var(--ink-2);font-size:var(--fs-small)}
+.golive strong{color:var(--ink);font-family:var(--mono);font-weight:500;font-size:var(--fs-body)}
+
+/* Flow */
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-2);padding:var(--s-6) var(--s-5) var(--s-5)}
+.flow-title{margin:0 0 var(--s-5)}
+.flow ol{list-style:none;margin:0;padding:0;position:relative}
+.flow-step{position:relative;padding-left:52px;padding-bottom:var(--s-5)}
+.flow-step:last-child{padding-bottom:0}
+.flow-step::before{content:"";position:absolute;left:15px;top:34px;bottom:0;width:2px;background:var(--line-strong)}
+.flow-step:last-child::before{display:none}
+.flow-dot{position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:var(--fs-small);font-weight:500}
+.flow-step h3{margin:2px 0 var(--s-2);font-size:var(--fs-body);font-weight:700;line-height:1.4}
+.fork{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--s-2);align-items:stretch}
+.fork-or{align-self:center;font-family:var(--mono);font-size:var(--fs-label);color:#6B4E00;background:#FFF6DF;border:1px solid var(--accent);border-radius:var(--r-1);padding:2px 6px}
+.flow-chip{display:flex;flex-direction:column;gap:2px;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-1);padding:var(--s-2) var(--s-3);font:inherit;font-size:var(--fs-small);line-height:1.4;color:var(--ink);cursor:pointer;min-height:44px;text-decoration:none;transition:border-color .15s,background .15s}
+.flow-chip:hover{border-color:var(--ink);background:var(--surface);color:var(--ink)}
+.flow-chip b{font-family:var(--mono);font-weight:500;color:var(--primary);font-size:var(--fs-label);letter-spacing:.06em}
+.flow-chip.single{display:inline-flex}
+
+/* Sections */
+section.block{padding:var(--s-9) 0;border-top:1px solid var(--line)}
+@media (max-width:420px){.brand small{display:none}}
+@media (max-width:640px){section.block{padding:var(--s-8) 0}.hero{padding:var(--s-7) 0 var(--s-8)}}
+.sec-head{display:grid;gap:var(--s-3);margin-bottom:var(--s-7);max-width:65ch}
+.sec-head h2{font-size:var(--fs-h2);line-height:1.25;margin:0;font-weight:700}
+.sec-head p{margin:0;color:var(--ink-2)}
+
+/* Lessons */
+.lessons{display:grid;grid-template-columns:1fr;gap:var(--s-6);align-items:start}
+@media (min-width:1024px){.lessons{grid-template-columns:minmax(0,8fr) minmax(0,5fr);gap:var(--s-7)}}
+.player{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-2);box-shadow:var(--shadow-1);overflow:hidden}
+@media (min-width:1024px){.player{position:sticky;top:var(--s-5)}}
+.screen{position:relative;aspect-ratio:16/9;background:var(--ink);color:#fff}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:var(--s-5);background:
+  repeating-linear-gradient(0deg,rgb(255 255 255 / .04) 0 1px,transparent 1px 32px),
+  repeating-linear-gradient(90deg,rgb(255 255 255 / .04) 0 1px,transparent 1px 32px),var(--ink)}
+.poster-num{font-family:var(--mono);font-size:clamp(3rem,10vw,6rem);line-height:1;font-weight:500;color:rgb(255 255 255 / .9)}
+.poster-num span{color:var(--primary)}
+.poster-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--s-4)}
+.poster-title{font-size:clamp(1rem,2.4vw,1.375rem);font-weight:700;line-height:1.4;max-width:28ch;margin:0}
+.poster .btn-primary{box-shadow:0 0 0 1px rgb(255 255 255 / .15)}
+.player-body{padding:var(--s-5)}
+.player-body .label{color:var(--primary)}
+.player-body h3{font-size:var(--fs-h3);line-height:1.4;margin:var(--s-2) 0 var(--s-2)}
+.player-body p{margin:0 0 var(--s-5);color:var(--ink-2);max-width:65ch}
+.player-nav{display:flex;flex-wrap:wrap;gap:var(--s-3);justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:var(--s-4)}
+.player-nav .pn{display:flex;gap:var(--s-2)}
+.ext{font-size:var(--fs-small);font-weight:500;display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
+.ext:hover{text-decoration:underline}
+.ext svg{width:16px;height:16px}
+
+.chapters{list-style:none;margin:0;padding:0;border-top:2px solid var(--line-strong)}
+.chapters li{border-bottom:1px solid var(--line)}
+.fork-label{display:flex;align-items:center;gap:var(--s-2);padding:var(--s-4) 0 var(--s-1);font-size:var(--fs-small);color:var(--ink-2)}
+.fork-label i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.chap{width:100%;display:grid;grid-template-columns:56px 1fr 24px;gap:var(--s-3);align-items:start;padding:var(--s-4) var(--s-3) var(--s-4) var(--s-3);background:transparent;border:0;border-left:3px solid transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:background .15s}
+.chap:hover{background:var(--surface)}
+.chap[aria-current="true"]{background:var(--primary-tint);border-left-color:var(--primary)}
+.chap-num{font-family:var(--mono);font-size:1.75rem;line-height:1;font-weight:500;color:var(--ink-3);padding-top:2px}
+.chap[aria-current="true"] .chap-num{color:var(--primary)}
+.chap-title{display:block;font-weight:700;line-height:1.4;margin-bottom:2px}
+.chap-desc{display:block;font-size:var(--fs-small);color:var(--ink-2);line-height:1.5}
+.chap-state{width:24px;height:24px;color:var(--ink-3);padding-top:2px}
+.chap-state svg{width:20px;height:20px}
+.chap.watched .chap-state{color:var(--success)}
+.progress{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-4);font-size:var(--fs-small);color:var(--ink-2)}
+.linkbtn{background:none;border:0;padding:0;font:inherit;font-size:var(--fs-small);color:var(--primary);cursor:pointer;min-height:44px;text-decoration:underline}
+
+/* Prep */
+.prep{display:grid;grid-template-columns:1fr;gap:0;border-top:2px solid var(--line-strong)}
+@media (min-width:768px){.prep{grid-template-columns:repeat(3,1fr)}}
+.prep-item{padding:var(--s-5) var(--s-5) var(--s-5) 0;border-bottom:1px solid var(--line)}
+@media (min-width:768px){.prep-item{border-bottom:0;border-right:1px solid var(--line);padding:var(--s-5) var(--s-5)}.prep-item:first-child{padding-left:0}.prep-item:last-child{border-right:0}}
+.prep-item h3{font-size:var(--fs-body);margin:var(--s-2) 0 var(--s-2);line-height:1.4}
+.prep-item p{margin:0;color:var(--ink-2);font-size:var(--fs-small);line-height:1.6}
+
+/* Help */
+.help{background:var(--ink);color:#fff;border-top:0}
+.help .wrap{display:grid;grid-template-columns:1fr;gap:var(--s-6)}
+@media (min-width:900px){.help .wrap{grid-template-columns:1fr 1fr;align-items:end}}
+.help h2{font-size:var(--fs-h2);line-height:1.25;margin:var(--s-3) 0 var(--s-3)}
+.help p{color:#C9CCD3;margin:0;max-width:52ch}
+.help .label{color:#C9CCD3}
+.contact{list-style:none;margin:0;padding:0;border-top:1px solid #3A3E47}
+.contact li{display:grid;grid-template-columns:120px 1fr;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid #3A3E47}
+.contact span{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:#C9CCD3;padding-top:4px}
+.help .ph{color:#3D2E00}
+
+footer{padding:var(--s-6) 0;font-size:var(--fs-small);color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-3)}
+</style>
+</head>
+<body>
+<a class="skip" href="#lessons">ข้ามไปที่วิดีโอ</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="หน้าแรก คู่มือวิดีโอ NAPS">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>NAPS Supplier Guide<small>APC Logistics · Asian Honda Motor</small></span>
+    </a>
+    <a class="top-link" href="#help">ติดต่อสอบถาม</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div>
+        <p class="label">Supplier Delivery Enhancement · วิดีโอ 4 ตอน</p>
+        <h1 id="h1">คีย์ Invoice และจอง Fast Lane บน <em>NAPS</em> <span class="nw">ทีละขั้นตอน</span></h1>
+        <p class="lead">วิดีโอสอนสำหรับซัพพลายเออร์ที่ส่งสินค้าเข้า APC ตั้งแต่สร้าง Invoice ในระบบ ออก Delivery Ticket ไปจนถึงจองช่องลงสินค้า Fast Lane ดูตามลำดับ หรือเลือกเฉพาะตอนที่ต้องการก็ได้</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#step-1" data-go="1">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11a.5.5 0 0 0 .77.42l8.5-5.5a.5.5 0 0 0 0-.84l-8.5-5.5A.5.5 0 0 0 6 4.5Z"/></svg>
+            เริ่มดูขั้นตอนที่ 1
+          </a>
+          <a class="btn btn-secondary" href="#prep">สิ่งที่ต้องเตรียม</a>
+        </div>
+        <p class="golive">เริ่มใช้งานจริงกับซัพพลายเออร์ <strong>14 ธ.ค. 2569</strong></p>
+      </div>
+
+      <aside class="flow" aria-labelledby="flow-title">
+        <p class="label flow-title" id="flow-title">ภาพรวมขั้นตอนงาน</p>
+        <ol>
+          <li class="flow-step">
+            <span class="flow-dot" aria-hidden="true">A</span>
+            <h3>สร้าง Invoice ในระบบ</h3>
+            <div class="fork">
+              <a class="flow-chip" href="#step-1" data-go="1"><b>ตอน 01</b>เลือก PO แล้วคีย์</a>
+              <span class="fork-or">หรือ</span>
+              <a class="flow-chip" href="#step-2" data-go="2"><b>ตอน 02</b>อัปโหลดไฟล์ CSV</a>
+            </div>
+          </li>
+          <li class="flow-step">
+            <span class="flow-dot" aria-hidden="true">B</span>
+            <h3>ออก Delivery Ticket</h3>
+            <a class="flow-chip single" href="#step-3" data-go="3"><b>ตอน 03</b>ดูวิดีโอ</a>
+          </li>
+          <li class="flow-step">
+            <span class="flow-dot" aria-hidden="true">C</span>
+            <h3>จองช่องลงสินค้า Fast Lane</h3>
+            <a class="flow-chip single" href="#step-4" data-go="4"><b>ตอน 04</b>ดูวิดีโอ</a>
+          </li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block" id="lessons" aria-labelledby="lessons-h" tabindex="-1">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">บทเรียน</p>
+        <h2 id="lessons-h">ดูวิดีโอทีละตอน</h2>
+        <p>ตอนที่ 1 และ 2 คือการสร้าง Invoice สองวิธี เลือกดูวิธีที่บริษัทคุณใช้ จากนั้นดูตอนที่ 3 และ 4 ต่อ</p>
+      </div>
+
+      <div class="lessons">
+        <div class="player" aria-live="polite">
+          <div class="screen" id="screen"></div>
+          <div class="player-body">
+            <p class="label" id="p-label">ตอน 01</p>
+            <h3 id="p-title"></h3>
+            <p id="p-desc"></p>
+            <div class="player-nav">
+              <div class="pn">
+                <button class="btn btn-secondary" id="prev" type="button">ตอนก่อนหน้า</button>
+                <button class="btn btn-secondary" id="next" type="button">ตอนถัดไป</button>
+              </div>
+              <a class="ext" id="p-ext" href="#" target="_blank" rel="noopener">
+                เปิดใน Google Drive
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M11 4h5v5M16 4l-7 7M14 11v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ol class="chapters" id="chapters" aria-label="รายการวิดีโอ"></ol>
+          <div class="progress">
+            <span id="progress-text">ดูแล้ว 0 จาก 4 ตอน</span>
+            <button class="linkbtn" id="reset" type="button">ล้างสถานะ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="prep" aria-labelledby="prep-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">ก่อนเริ่ม</p>
+        <h2 id="prep-h">สิ่งที่ต้องเตรียม</h2>
+      </div>
+      <div class="prep">
+        <div class="prep-item">
+          <p class="label">01</p>
+          <h3>บัญชีผู้ใช้ NAPS</h3>
+          <p>ใช้ User และรหัสผ่านของบริษัทคุณเข้าระบบ <span class="ph">[ใส่วิธีขอบัญชี / ติดต่อใครถ้ายังไม่มี]</span></p>
+        </div>
+        <div class="prep-item">
+          <p class="label">02</p>
+          <h3>ลิงก์เข้าระบบ NAPS</h3>
+          <p><span class="ph">[ใส่ URL หน้า Log-in ของ NAPS]</span></p>
+        </div>
+        <div class="prep-item">
+          <p class="label">03</p>
+          <h3>ไฟล์แม่แบบ CSV (ถ้าใช้วิธีอัปโหลด)</h3>
+          <p>ดาวน์โหลดแม่แบบได้จากหน้าระบบ NAPS ดูวิธีดาวน์โหลดและกรอกข้อมูลได้ใน <a href="#step-2" data-go="2">ตอนที่ 2</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block help" id="help" aria-labelledby="help-h">
+    <div class="wrap">
+      <div>
+        <p class="label">ติดปัญหา?</p>
+        <h2 id="help-h">ติดต่อทีม APC Logistics</h2>
+        <p>ถ้าทำตามวิดีโอแล้วยังติดขัด หรือหน้าจอในระบบไม่ตรงกับวิดีโอ แจ้งเราได้ตามช่องทางนี้</p>
+      </div>
+      <ul class="contact">
+        <li><span>ผู้ประสานงาน</span><div><span class="ph">[ชื่อ / แผนก]</span></div></li>
+        <li><span>อีเมล</span><div><span class="ph">[อีเมล]</span></div></li>
+        <li><span>โทร</span><div><span class="ph">[เบอร์โทร]</span></div></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Logistics Department · Parts Business (APC) · Asian Honda Motor Co., Ltd.</span>
+    <span>อัปเดตล่าสุด 16 พ.ย. 2569</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var VIDEOS = [
+    {id:"1LQxOmU7PM6OKaYcSVFiV1EJ4x0Uxg2mG", title:"คีย์ Invoice แบบเลือก PO",
+     desc:"เลือก PO ที่จะส่งสินค้า แล้วกรอกข้อมูล Invoice บนหน้าจอ NAPS", group:"invoice"},
+    {id:"1Xu_Rz6RdBa52qrP4gWK7Rfen2ceKSxuu", title:"คีย์ Invoice ด้วยการอัปโหลดไฟล์ CSV",
+     desc:"ดาวน์โหลดไฟล์แม่แบบ CSV กรอกข้อมูล แล้วอัปโหลดเข้าระบบ", group:"invoice"},
+    {id:"1_kLOnI-xd8ueR5GRawDEoJvrnM2MAtNV", title:"ออก Delivery Ticket",
+     desc:"หลังคีย์ Invoice แล้ว ออก Delivery Ticket สำหรับรอบส่งสินค้า"},
+    {id:"1VZb0guWEqLGF2Bc6WO0BlqPqyde_-MJT", title:"จอง Fast Lane",
+     desc:"จองช่องลงสินค้า Fast Lane ผ่านระบบ NAPS"}
+  ];
+  // Google Drive player can be embedded on normal hosts (GitHub Pages, Google Sites, local file).
+  // Claude artifact pages block third-party iframes, so there we show a link to Drive instead.
+  var host = location.hostname || "";
+  var CAN_EMBED = !/claude|anthropic/i.test(host);
+
+  var current = 0, KEY = "naps-guide-watched", watched = {};
+  try{ watched = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; }catch(e){ watched = {}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(watched)); }catch(e){} }
+
+  var ICON_PLAY = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M8.5 7.2v5.6l4.3-2.8z" fill="currentColor" stroke="none"/></svg>';
+  var ICON_CHECK = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M6.8 10.2l2.2 2.2 4.3-4.6"/></svg>';
+  var pad = function(n){ return (n < 10 ? "0" : "") + n; };
+
+  var list = document.getElementById("chapters");
+  function renderList(){
+    var html = "";
+    VIDEOS.forEach(function(v, i){
+      if(i === 0) html += '<li class="fork-label" aria-hidden="true"><i></i>สร้าง Invoice — เลือกวิธีใดวิธีหนึ่ง</li>';
+      if(i === 2) html += '<li class="fork-label" aria-hidden="true">หลังสร้าง Invoice</li>';
+      var w = !!watched[v.id];
+      html += '<li><button type="button" class="chap' + (w ? ' watched' : '') + '" data-i="' + i + '"' +
+        (i === current ? ' aria-current="true"' : '') + '>' +
+        '<span class="chap-num">' + pad(i+1) + '</span>' +
+        '<span><span class="chap-title">' + v.title + '</span><span class="chap-desc">' + v.desc + '</span></span>' +
+        '<span class="chap-state" aria-label="' + (w ? 'ดูแล้ว' : 'ยังไม่ได้ดู') + '">' + (w ? ICON_CHECK : ICON_PLAY) + '</span>' +
+        '</button></li>';
+    });
+    list.innerHTML = html;
+    var n = VIDEOS.filter(function(v){ return watched[v.id]; }).length;
+    document.getElementById("progress-text").textContent = "ดูแล้ว " + n + " จาก " + VIDEOS.length + " ตอน";
+  }
+
+  var screen = document.getElementById("screen");
+  function viewUrl(v){ return "https://drive.google.com/file/d/" + v.id + "/view"; }
+
+  function showPoster(v, i){
+    var playable = CAN_EMBED;
+    screen.innerHTML =
+      '<div class="poster">' +
+        '<div class="poster-num">' + pad(i+1) + '<span>.</span></div>' +
+        '<div class="poster-bottom">' +
+          '<p class="poster-title">' + v.title + '</p>' +
+          (playable
+            ? '<button type="button" class="btn btn-primary" id="play">' + 'เล่นวิดีโอ</button>'
+            : '<a class="btn btn-primary" href="' + viewUrl(v) + '" target="_blank" rel="noopener" id="play">ดูวิดีโอใน Google Drive</a>') +
+        '</div>' +
+      '</div>';
+    var p = document.getElementById("play");
+    p.addEventListener("click", function(){
+      watched[v.id] = true; save(); renderList();
+      if(playable){
+        screen.innerHTML = '<iframe src="https://drive.google.com/file/d/' + v.id + '/preview" title="วิดีโอตอนที่ ' + (i+1) + ': ' + v.title + '" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      }
+    });
+  }
+
+  function select(i, opts){
+    opts = opts || {};
+    current = Math.max(0, Math.min(VIDEOS.length - 1, i));
+    var v = VIDEOS[current];
+    document.getElementById("p-label").textContent = "ตอน " + pad(current+1) + " / " + pad(VIDEOS.length);
+    document.getElementById("p-title").textContent = v.title;
+    document.getElementById("p-desc").textContent = v.desc;
+    document.getElementById("p-ext").href = viewUrl(v);
+    document.getElementById("prev").disabled = current === 0;
+    document.getElementById("next").disabled = current === VIDEOS.length - 1;
+    showPoster(v, current);
+    renderList();
+    if(opts.hash !== false){ try{ history.replaceState(null, "", "#step-" + (current+1)); }catch(e){ location.hash = "step-" + (current+1); } }
+    if(opts.scroll){ document.getElementById("lessons").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"}); }
+    if(opts.focus){ var b = list.querySelector('[data-i="' + current + '"]'); if(b) b.focus({preventScroll:true}); }
+  }
+
+  list.addEventListener("click", function(e){
+    var b = e.target.closest(".chap"); if(!b) return;
+    select(+b.dataset.i, {focus:true});
+    if(window.innerWidth < 1024) document.querySelector(".player").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  document.getElementById("prev").addEventListener("click", function(){ select(current - 1); });
+  document.getElementById("next").addEventListener("click", function(){ select(current + 1); });
+  document.getElementById("reset").addEventListener("click", function(){ watched = {}; save(); renderList(); });
+  document.querySelectorAll("[data-go]").forEach(function(a){
+    a.addEventListener("click", function(e){ e.preventDefault(); select(+a.dataset.go - 1, {scroll:true}); });
+  });
+
+  function fromHash(){
+    var m = /^#step-(\d)$/.exec(location.hash);
+    if(m){ select(+m[1] - 1, {hash:false, scroll:true}); return true; }
+    return false;
+  }
+  window.addEventListener("hashchange", fromHash);
+  if(!fromHash()) select(0, {hash:false});
+})();
+</script>
+</body>
+</html>
