@@ -156,14 +156,18 @@ section.block{padding:var(--s-9) 0;border-top:1px solid var(--line)}
 /* Help */
 .help{background:var(--ink);color:#fff;border-top:0}
 .help .wrap{display:grid;grid-template-columns:1fr;gap:var(--s-6)}
-@media (min-width:900px){.help .wrap{grid-template-columns:1fr 1fr;align-items:end}}
+@media (min-width:900px){.help .wrap{grid-template-columns:1fr 1fr;align-items:start}}
 .help h2{font-size:var(--fs-h2);line-height:1.25;margin:var(--s-3) 0 var(--s-3)}
 .help p{color:#C9CCD3;margin:0;max-width:52ch}
 .help .label{color:#C9CCD3}
 .contact{list-style:none;margin:0;padding:0;border-top:1px solid #3A3E47}
-.contact li{display:grid;grid-template-columns:120px 1fr;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid #3A3E47}
-.contact span{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:#C9CCD3;padding-top:4px}
+.contact li{display:grid;grid-template-columns:150px 1fr;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid #3A3E47}
+.contact li > span{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:#C9CCD3;padding-top:4px}
 .help .ph{color:#3D2E00}
+.contact .ct{display:block;line-height:1.5}
+.contact .cto{display:block;font-size:var(--fs-small);color:#C9CCD3;line-height:1.5;margin-top:2px}
+.contact .cto b{color:#fff;font-weight:500}
+@media (max-width:520px){.contact li{grid-template-columns:1fr;gap:var(--s-1)}}
 .contact-link{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .contact-link:hover{color:#C9CCD3}
 .help :focus-visible{outline-color:#93B4FF}
@@ -172,7 +176,7 @@ footer{padding:var(--s-6) 0;font-size:var(--fs-small);color:var(--ink-3)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-3)}
 /* Contact pop-up */
 .top-link{background:none;border:0;font:inherit;color:var(--primary);cursor:pointer}
-dialog.pop{border:0;padding:0;border-radius:var(--r-2);width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 32px);background:var(--surface);color:var(--ink);box-shadow:0 24px 64px rgb(22 24 29 / .28)}
+dialog.pop{border:0;padding:0;border-radius:var(--r-2);width:min(520px,calc(100vw - 32px));max-height:calc(100vh - 32px);background:var(--surface);color:var(--ink);box-shadow:0 24px 64px rgb(22 24 29 / .28)}
 dialog.pop::backdrop{background:rgb(22 24 29 / .55)}
 dialog.pop[open]{animation:pop-in .18s ease-out}
 @keyframes pop-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
@@ -186,7 +190,10 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
 .pop-list li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid var(--line)}
 .pop-list li:last-child{border-bottom:0}
 .pop-list .k{display:block;font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.pop-list .v{display:block;font-weight:500;word-break:break-word}
+.pop-list .v{display:block;font-weight:500;line-height:1.5;margin-top:2px}
+.pop-list .to{display:block;font-size:var(--fs-small);color:var(--ink-2);line-height:1.5;margin-top:2px}
+.pop-list .to b{color:var(--ink);font-weight:500}
+.pop-list .to a{color:var(--primary);font-weight:500;word-break:break-all}
 .pop-list a.v{color:var(--ink)}
 .pop-list a.v:hover{color:var(--primary)}
 .copy{min-height:36px;padding:0 var(--s-3);border:1px solid var(--line);background:var(--surface);border-radius:var(--r-1);font:inherit;font-size:var(--fs-small);color:var(--ink-2);cursor:pointer;white-space:nowrap}
@@ -332,13 +339,14 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
     <div class="wrap">
       <div>
         <p class="label">ติดปัญหา?</p>
-        <h2 id="help-h">ติดต่อทีม APC Logistics</h2>
-        <p>ถ้าทำตามวิดีโอแล้วยังติดขัด หรือหน้าจอในระบบไม่ตรงกับวิดีโอ แจ้งเราได้ตามช่องทางนี้</p>
+        <h2 id="help-h"><span class="nw">ติดปัญหาเรื่องไหน</span> <span class="nw">ติดต่อใคร</span></h2>
+        <p>เลือกตามเรื่องที่ติดปัญหา เพื่อให้ถึงผู้รับผิดชอบโดยตรง</p>
       </div>
       <ul class="contact">
-        <li><span>ผู้ประสานงาน</span><div>Sopanat Dounglek · Logistics Department</div></li>
-        <li><span>อีเมล</span><div><a class="contact-link" href="mailto:sopandou@honda.th.com">sopandou@honda.th.com</a></div></li>
-        <li><span>โทร</span><div><a class="contact-link" href="tel:0935817243">093-581-7243</a></div></li>
+        <li><span>Cost</span><div><span class="ct">ติดปัญหาเรื่องราคา (Cost)</span><span class="cto">ติดต่อ <b>แผนก Cost</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+        <li><span>Child incomplete</span><div><span class="ct">ติดปัญหาเรื่องงาน Child part ยังไม่ได้ปล่อย (Child incomplete)</span><span class="cto">ติดต่อ <b>แผนกจัดซื้อ</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+        <li><span>COO</span><div><span class="ct">ติดปัญหาเรื่องประเทศต้นกำเนิดสินค้า (COO)</span><span class="cto">ติดต่อ <b>แผนกจัดซื้อ</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+        <li><span>NAPS</span><div><span class="ct">สอบถามการใช้งานระบบ Invoice key-in และ Fast Lane บน NAPS</span><span class="cto">ติดต่อ <a class="contact-link" href="mailto:sopandou@honda.th.com">sopandou@honda.th.com</a></span></div></li>
       </ul>
     </div>
   </section>
@@ -474,23 +482,22 @@ dialog.pop[open]{animation:pop-in .18s ease-out}
   <div class="pop-head">
     <div>
       <p class="label">ติดต่อสอบถาม</p>
-      <h2 id="pop-title">ทีม APC Logistics</h2>
-      <p id="pop-desc">ติดปัญหาการใช้ NAPS หรือหน้าจอไม่ตรงกับวิดีโอ ติดต่อได้ที่</p>
+      <h2 id="pop-title"><span class="nw">ติดปัญหาเรื่องไหน</span> <span class="nw">ติดต่อใคร</span></h2>
+      <p id="pop-desc">เลือกตามเรื่องที่ติดปัญหา เพื่อให้ถึงผู้รับผิดชอบโดยตรง</p>
     </div>
     <button class="pop-close" type="button" data-close aria-label="ปิด">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
     </button>
   </div>
   <ul class="pop-list">
-    <li><div><span class="k">ผู้ประสานงาน</span><span class="v">Sopanat Dounglek · Logistics Department</span></div></li>
-    <li><div><span class="k">อีเมล</span><a class="v" href="mailto:sopandou@honda.th.com">sopandou@honda.th.com</a></div>
-        <button class="copy" type="button" data-copy="sopandou@honda.th.com">คัดลอก</button></li>
-    <li><div><span class="k">โทร</span><a class="v" href="tel:0935817243">093-581-7243</a></div>
-        <button class="copy" type="button" data-copy="093-581-7243">คัดลอก</button></li>
+    <li><div><span class="k">Cost</span><span class="v">ติดปัญหาเรื่องราคา (Cost)</span><span class="to">ติดต่อ <b>แผนก Cost</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+    <li><div><span class="k">Child incomplete</span><span class="v">ติดปัญหาเรื่องงาน Child part ยังไม่ได้ปล่อย (Child incomplete)</span><span class="to">ติดต่อ <b>แผนกจัดซื้อ</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+    <li><div><span class="k">COO</span><span class="v">ติดปัญหาเรื่องประเทศต้นกำเนิดสินค้า (COO)</span><span class="to">ติดต่อ <b>แผนกจัดซื้อ</b> · Asian Honda Motor Co., Ltd.</span></div></li>
+    <li><div><span class="k">NAPS</span><span class="v">สอบถามการใช้งานระบบ Invoice key-in และ Fast Lane บน NAPS</span><span class="to">ติดต่อ <a href="mailto:sopandou@honda.th.com">sopandou@honda.th.com</a></span></div>
+        <button class="copy" type="button" data-copy="sopandou@honda.th.com" aria-label="คัดลอกอีเมล sopandou@honda.th.com">คัดลอก</button></li>
   </ul>
   <div class="pop-foot">
-    <a class="btn btn-primary" href="mailto:sopandou@honda.th.com">ส่งอีเมล</a>
-    <a class="btn btn-secondary" href="tel:0935817243">โทรหา</a>
+    <a class="btn btn-primary" href="mailto:sopandou@honda.th.com?subject=%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20NAPS">ส่งอีเมลสอบถามการใช้งาน NAPS</a>
   </div>
 </dialog>
 
